@@ -2,6 +2,14 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
+/.swiftpm
+Package.resolved
+
 ## User settings
 xcuserdata/
 
