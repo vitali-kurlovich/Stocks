@@ -40,6 +40,6 @@ public extension Tick {
     }
 
     func setPrice(_ price: Price) -> Self {
-        .init(time: time, price: price)
+        .init(time: time, price: price, volume: volume)
     }
 }
