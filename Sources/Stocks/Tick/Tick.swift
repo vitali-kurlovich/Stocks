@@ -35,7 +35,7 @@ struct Tick<Time: BaseValue, PriceValue: BaseValue, VolumeValue: BaseValue>: Has
 extension Tick: TimeValueProtocol, PriceTickProtocol, VolumeTickProtocol {}
 
 public extension Tick {
-    func setTime(_ time: Time) -> Self {
+    func setTime<TimeValue: BaseValue>(_ time: TimeValue) -> Tick<TimeValue, PriceValue, VolumeValue> {
         .init(time: time, price: price, volume: volume)
     }
 
