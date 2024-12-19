@@ -22,11 +22,30 @@ struct PriceCandleTests {
 
     @Test("Set candle price")
     func setPrice() {
-        let tick = PriceCandle(time: 12, price: .init(open: 10, close: 20, low: 5, high: 25))
+        let candle = PriceCandle(time: 12, price: .init(open: 10, close: 20, low: 5, high: 25))
 
         let price = CandlePrice(open: 10.0, close: 20.0, low: 5.0, high: 25.0)
-        let new = tick.setPrice(price)
+        let new = candle.setPrice(price)
 
         #expect(new == PriceCandle(time: 12, price: .init(open: 10.0, close: 20.0, low: 5.0, high: 25.0)))
+    }
+
+    @Test("Set candle volume")
+    func setVolume() {
+        let candle = PriceCandle(time: 12, price: .init(open: 10, close: 20, low: 5, high: 25))
+
+        let new = candle.setVolume(10.0)
+
+        #expect(new == Candle(time: 12, price: .init(open: 10, close: 20, low: 5, high: 25), volume: 10.0))
+    }
+
+    @Test("Set candle price & volume")
+    func setPriceVolume() {
+        let candle = PriceCandle(time: 12, price: .init(open: 10, close: 20, low: 5, high: 25))
+
+        let price = CandlePrice(open: 10.0, close: 20.0, low: 5.0, high: 25.0)
+        let new = candle.setPrice(price, volume: 10.0)
+
+        #expect(new == Candle(time: 12, price: .init(open: 10.0, close: 20.0, low: 5.0, high: 25.0), volume: 10.0))
     }
 }
