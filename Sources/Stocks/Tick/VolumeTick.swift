@@ -23,27 +23,19 @@ extension VolumeTick: TimeValueProtocol, VolumeTickProtocol {}
 
 public
 extension VolumeTick {
-    func setTime(_ time: Time) -> Self {
+    func setTime<TimeValue: BaseValue>(_ time: TimeValue) -> VolumeTick<TimeValue, VolumeValue> {
         .init(time: time, volume: volume)
     }
 
-    func setVolume(_ volume: Volume) -> Self {
+    func setVolume<VolumeValueType: BaseValue>(_ volume: AskBidVolume<VolumeValueType>) -> VolumeTick<Time, VolumeValueType> {
         .init(time: time, volume: volume)
     }
 
     func setPrice<PriceValue: BaseValue>(_ price: AskBidPrice<PriceValue>) -> Tick<Time, PriceValue, VolumeValue> {
         .init(time: time, price: price, volume: volume)
     }
-}
 
-public
-extension VolumeTick {
-    func combine<T: PriceTickProtocol>(_ tick: T) -> Tick<Time, T.PriceValue, VolumeValue> {
-        return .init(time: time, price: tick.price, volume: volume)
-    }
-
-    func combine<T: TimeValueProtocol & PriceTickProtocol>(_ tick: T) -> Tick<Time, T.PriceValue, VolumeValue> where Self.Time == T.Time {
-        assert(time == tick.time)
-        return .init(time: time, price: tick.price, volume: volume)
+    func setPrice<PriceValueType: BaseValue, VolumeValueType: BaseValue>(_ price: AskBidPrice<PriceValueType>, volume: AskBidVolume<VolumeValueType>) -> Tick<Time, PriceValueType, VolumeValueType> {
+        .init(time: time, price: price, volume: volume)
     }
 }

@@ -28,6 +28,9 @@ struct TimePointTests {
         let new = time.setPrice(price)
 
         #expect(new == PriceTick(time: 12, price: .init(ask: 10, bid: 12)))
+
+        let new1 = time.setPrice(.init(ask: 20.0, bid: 30.0))
+        #expect(new1 == PriceTick(time: 12, price: .init(ask: 20.0, bid: 30.0)))
     }
 
     @Test("Set candle price")
@@ -38,6 +41,9 @@ struct TimePointTests {
         let new = time.setPrice(price)
 
         #expect(new == PriceCandle(time: 12, price: .init(open: 4, close: 5, low: 1, high: 10)))
+
+        let new1 = time.setPrice(.init(open: 10.0, close: 12.0, low: 5.0, high: 15.0))
+        #expect(new1 == PriceCandle(time: 12, price: .init(open: 10.0, close: 12.0, low: 5.0, high: 15.0)))
     }
 
     @Test("Set ticks volume")

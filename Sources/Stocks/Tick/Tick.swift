@@ -39,7 +39,17 @@ public extension Tick {
         .init(time: time, price: price, volume: volume)
     }
 
-    func setPrice(_ price: Price) -> Self {
+    func setPrice<PriceValueType: BaseValue>(_ price: AskBidPrice<PriceValueType>) -> Tick<Time, PriceValueType, VolumeValue> {
+        .init(time: time, price: price, volume: volume)
+    }
+
+    func setVolume<VolumeValueType: BaseValue>(_ volume: AskBidVolume<VolumeValueType>) -> Tick<Time, PriceValue, VolumeValueType> {
+        .init(time: time, price: price, volume: volume)
+    }
+
+    func setPrice<PriceValueType: BaseValue, VolumeValueType: BaseValue>(_ price: AskBidPrice<PriceValueType>,
+                                                                         volume: AskBidVolume<VolumeValueType>) -> Tick<Time, PriceValueType, VolumeValueType>
+    {
         .init(time: time, price: price, volume: volume)
     }
 }
