@@ -7,7 +7,7 @@ on: [push]
 
 jobs:
   build:
-    name: Swift 
+    name: macOS 
         runs-on: macos-latest
     steps:
       - uses: SwiftyLab/setup-swift@latest
