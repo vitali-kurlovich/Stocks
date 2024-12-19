@@ -16,8 +16,9 @@ struct VolumeCandle<Time: BaseValue, Volume: BaseValue>: Hashable, Sendable {
     }
 }
 
+public
 extension VolumeCandle {
-    func setTime(_ time: Time) -> Self {
+    func setTime<TimeValue: BaseValue>(_ time: TimeValue) -> VolumeCandle<TimeValue, Volume> {
         .init(time: time, volume: volume)
     }
 
