@@ -19,5 +19,7 @@ jobs:
           swift-version: ${{ matrix.swift }}
       - name: Get swift version
         run: swift --version
+      - name: List directory
+        run: ls
       - name: Run tests
         run: swift test
