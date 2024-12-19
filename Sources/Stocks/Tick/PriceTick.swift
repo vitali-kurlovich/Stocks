@@ -25,23 +25,11 @@ extension PriceTick: TimeValueProtocol, PriceTickProtocol {}
 
 public
 extension PriceTick {
-    func setTime(_ time: Time) -> Self {
+    func setTime<TimeValue: BaseValue>(_ time: TimeValue) -> PriceTick<TimeValue, PriceValue> {
         .init(time: time, price: price)
     }
 
     func setPrice(_ price: Price) -> Self {
         .init(time: time, price: price)
-    }
-}
-
-public
-extension PriceTick {
-    func combine<T: VolumeTickProtocol>(_ tick: T) -> Tick<Time, PriceValue, T.VolumeValue> {
-        return .init(time: time, price: price, volume: tick.volume)
-    }
-
-    func combine<T: TimeValueProtocol & VolumeTickProtocol>(_ tick: T) -> Tick<Time, PriceValue, T.VolumeValue> where Self.Time == T.Time {
-        assert(tick.time == time)
-        return .init(time: time, price: price, volume: tick.volume)
     }
 }
