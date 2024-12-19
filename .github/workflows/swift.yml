@@ -10,7 +10,7 @@ jobs:
     name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
     strategy:
       matrix:
-        os_version: [ubuntu-latest, macos-latest]
+        os_version: [ubuntu-latest, macos-15.1]
         swift_version: ['6.0', 'nightly-main', 'nightly-6.0']
     container:
         image: ${{ (contains(matrix.swift_version, 'nightly') && 'swiftlang/swift') || 'swift' }}:${{ matrix.swift_version }}-${{ matrix.os_version }}
