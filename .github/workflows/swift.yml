@@ -7,16 +7,15 @@ on: [push]
 
 jobs:
   build:
-    name: macOS 
-        runs-on: macos-latest
+    name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        swift: ["6.0.0"]
     steps:
       - uses: SwiftyLab/setup-swift@latest
         with:
-          development: true
-      - name: Swift version
+          swift-version: ${{ matrix.swift }}
+      - name: Get swift version
         run: swift --version
-      - uses: actions/checkout@v4
-      - name: Build
-        run: swift build
-      - name: Run tests
-        run: swift test
