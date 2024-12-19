@@ -25,4 +25,14 @@ extension VolumeCandle {
     func setVolume<VolumeValue: BaseValue>(_ volume: VolumeValue) -> VolumeCandle<Time, VolumeValue> {
         .init(time: time, volume: volume)
     }
+
+    func setPrice<PriceValue: BaseValue>(_ price: CandlePrice<PriceValue>) -> Candle<Time, PriceValue, Volume> {
+        .init(time: time, price: price, volume: volume)
+    }
+
+    func setPrice<PriceValueType: BaseValue, VolumeValueType: BaseValue>(_ price: CandlePrice<PriceValueType>,
+                                                                         volume: VolumeValueType) -> Candle<Time, PriceValueType, VolumeValueType>
+    {
+        .init(time: time, price: price, volume: volume)
+    }
 }

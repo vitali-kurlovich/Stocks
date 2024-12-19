@@ -21,7 +21,7 @@ struct VolumeTickTests {
     }
 
     @Test("Set ticks price")
-    func setTickPrice() {
+    func setPrice() {
         let tick = VolumeTick(time: 12, volume: .init(ask: 12, bid: 20))
 
         let price = AskBidPrice(ask: 10.0, bid: 12.0)
@@ -31,7 +31,7 @@ struct VolumeTickTests {
     }
 
     @Test("Set ticks volume")
-    func setTickVolume() {
+    func setVolume() {
         let tick = VolumeTick(time: 12, volume: .init(ask: 12, bid: 20))
 
         let volume = AskBidVolume(ask: 10.0, bid: 12.0)
@@ -41,7 +41,7 @@ struct VolumeTickTests {
     }
 
     @Test("Set ticks price & volume")
-    func setTickPriceVolume() {
+    func setPriceVolume() {
         let tick = VolumeTick(time: 12, volume: .init(ask: 12, bid: 20))
 
         let price = AskBidPrice(ask: 100, bid: 120)
