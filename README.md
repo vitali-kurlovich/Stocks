@@ -1,3 +1,4 @@
 # Stocks
 
-![Build](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=push)
+![Build](https://github.com/vitali-kurlovich/Stocks/blob/main/.github/workflows/swift.yml/badge.svg?event=push)
+
